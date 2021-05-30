@@ -13,9 +13,6 @@ RUN pip3 install -r /app/requirements.txt
 COPY rgeocode/ /app
 
 EXPOSE 80
+WORKDIR /app
 
-ENTRYPOINT /usr/local/bin/gunicorn \
-    -b 0.0.0.0:80 \
-    -w 4 \
-    -k uvicorn.workers.UvicornWorker main:app \
-    --chdir /app
+CMD ["gunicorn", "-k", "uvicorn.workers.UvicornWorker", "--bind", "0.0.0.0:80", "--workers", "1" ,"--threads", "8", "--timeout", "0" ,"main:app"]
