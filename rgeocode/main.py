@@ -5,13 +5,13 @@ import json
 
 class Coordinates(BaseModel):
     latitude: str
-    longtitude: str
+    longitude: str
 
 app = FastAPI()
     
 @app.post("/georeverse/")
 async def georeverse(coords: Coordinates):
-    location = get_location(coords.latitude, coords.longtitude)
+    location = get_location(coords.latitude, coords.longitude)
     location_json = json.dumps(location)
     
     return location
