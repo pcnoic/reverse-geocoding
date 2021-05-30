@@ -1,0 +1,7 @@
+version: '3' 
+services: 
+  rgeocode-api: 
+    name: rgeocode-api
+    image: rgeocode-api:latest # used for local dev 
+    ports: 
+      - '8080:80'
